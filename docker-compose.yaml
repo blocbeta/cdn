@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  php-fpm:
+    working_dir: /var/www
+    build: _docker/php-fpm
+    ports:
+      - "9002:9000"
+    volumes:
+      - ./:/var/www:delegated
+
+  nginx:
+    working_dir: /var/www
+    image: nginx:alpine
+    volumes:
+      - ./:/var/www:delegated
+      - ./_docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
