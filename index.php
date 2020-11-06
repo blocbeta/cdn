@@ -132,7 +132,7 @@ class Kernel extends BaseKernel
         $client = new S3Client([
             "version" => "latest",
             "region" => "us-east-1",
-            "endpoint" => "https://cdn.disko.io",
+            "endpoint" => $_ENV["MINIO_ENDPOINT"],
             "use_path_style_endpoint" => true,
             "credentials" => [
                 "key" => $_ENV["MINIO_KEY"],
